@@ -12,55 +12,74 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>TakList Supero</title>
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.min.css" />
     </head>
-    <body>
-        <form action="index.jsp" method="post">
-            <label>Descrição: </label><br>
-            <input type="text" name="descricao"/><br>
-            <button type="submit"> ENVIAR</button>
-        </form>
+    <body  background="./img/8727.jpg">
         
+        <div class='col-md-6'> 
+            
+            <br><img src="./img/logo.PNG"><br><br>
+                <form action="index.jsp" method="post">
+                    <h2>Task List Supero</h2><br>
+                    <label>Título: </label>
+                    <input type="text" name="descricao"/>    
+                    <button type="submit" class="btn-primary"> <b>PESQUISAR</b></button><br>
+                    <br>
+                </form>
+            
+        </div>
+
         <%
-            try{
-                out.print("<table>");
+            try {
+
+                out.print("<div class='col-md-6'>");
+                out.print("<div class='alert alert-info'>");
+                out.print("<div class'panel panel-default'>");
+                out.print("<center>");
+                out.print("<table  width='100%'>");
                 out.print("<tr>");
-                out.print("<th>ID</th><th>DECRIÇÃO</th><th>STATUS</th><th>EDITAR</th><th>EXCLUIR</th>");
+                out.print("<th>ID</th><th>TITULO</th><th>STATUS</th>");
+                out.print("</tr>");
+                out.print("</center>");
+                out.print("</div>");
+                out.print("</div>");
                 TarefaDAO dao = new TarefaDAO();
-                if(request.getParameter("descricao") == ""||request.getParameter("descricao") == null){
+                if (request.getParameter("descricao") == "" || request.getParameter("descricao") == null) {
                     ArrayList<Tarefa> lista = dao.listar();
-                    for(int num = 0; num < lista.size(); num++){
+                    for (int num = 0; num < lista.size(); num++) {
                         out.print("<tr>");
-                        out.print("<td>"+lista.get(num).getIdtarefas()+"</td>");
-                        out.print("<td>"+lista.get(num).getTarefas_descricao()+"</td>");
-                        out.print("<td>"+lista.get(num).getTarefas_status()+"</td>");
-                        out.print("<td>"+lista.get(num).getTarefas_status()+"</td>");
-                        out.print("<td><a href='alterar.jsp?id="+lista.get(num).getIdtarefas()+" &descricao="+lista.get(num).getTarefas_descricao()+" &status="+lista.get(num).getTarefas_status()+"'>CLIQUE</a></td>");
-                        out.print("<td><a href='alterar.jsp?id="+lista.get(num).getIdtarefas()+" &descricao="+lista.get(num).getTarefas_descricao()+" &status="+lista.get(num).getTarefas_status()+"'>CLIQUE</a></td>");
+                        out.print("<td>" + lista.get(num).getIdtarefas() + "</td>");
+                        out.print("<td>" + lista.get(num).getTarefas_descricao() + "</td>");
+                        out.print("<td>" + lista.get(num).getTarefas_status() + "</td>");
+                        out.print("<td><a href='alterar.jsp?id=" + lista.get(num).getIdtarefas() + " &descricao=" + lista.get(num).getTarefas_descricao() + " &status=" + lista.get(num).getTarefas_status() + "'>EDITAR</a></td>");
+                        out.print("<td><a href='excluir.jsp?id=" + lista.get(num).getIdtarefas() + " &descricao=" + lista.get(num).getTarefas_descricao() + " &status=" + lista.get(num).getTarefas_status() + "'>EXCLUIR</a></td>");
                         out.print("</tr>");
                     }
-                }else{
-                     ArrayList<Tarefa> lista = dao.listarDescricao(request.getParameter("descricao"));
-                    for(int num = 0; num < lista.size(); num++){
+                } else {
+                    ArrayList<Tarefa> lista = dao.listarDescricao(request.getParameter("descricao"));
+                    for (int num = 0; num < lista.size(); num++) {
                         out.print("<tr>");
-                        out.print("<td>"+lista.get(num).getIdtarefas()+"</td>");
-                        out.print("<td>"+lista.get(num).getTarefas_descricao()+"</td>");
-                        out.print("<td>"+lista.get(num).getTarefas_status()+"</td>");
-                        out.print("<td>"+lista.get(num).getTarefas_status()+"</td>");
-                        out.print("<td><a href='alterar.jsp?id="+lista.get(num).getIdtarefas()+" &descricao="+lista.get(num).getTarefas_descricao()+" &status="+lista.get(num).getTarefas_status()+"'>CLIQUE</a></td>");
-                        out.print("<td><a href='alterar.jsp?id="+lista.get(num).getIdtarefas()+" &descricao="+lista.get(num).getTarefas_descricao()+" &status="+lista.get(num).getTarefas_status()+"'>CLIQUE</a></td>");
+                        out.print("<td>" + lista.get(num).getIdtarefas() + "</td>");
+                        out.print("<td>" + lista.get(num).getTarefas_descricao() + "</td>");
+                        out.print("<td>" + lista.get(num).getTarefas_status() + "</td>");
+                        out.print("<td><a href='alterar.jsp?id=" + lista.get(num).getIdtarefas() + " &descricao=" + lista.get(num).getTarefas_descricao() + " &status=" + lista.get(num).getTarefas_status() + "'>EDITAR</a></td>");
+                        out.print("<td><a href='excluir.jsp?id=" + lista.get(num).getIdtarefas() + " &descricao=" + lista.get(num).getTarefas_descricao() + " &status=" + lista.get(num).getTarefas_status() + "'>EXCLUIR</a></td>");
                         out.print("</tr>");
                     }
                 }
-                
-                out.print("</tr>");
+
                 out.print("</table>");
-            }catch(Exception e){
+                out.print("</div>");
+            } catch (Exception e) {
                 throw new RuntimeException("Falha no index para gravar a descrição: " + e);
             }
-            %>
-            
-            <a href="inserir.jsp">NOVO</a>
-        
+        %>
+
+        <br><a href="inserir.jsp"><button type="submit" class="btn btn-primary"> <b>NOVA TAREFA</b></button></a>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
     </body>
 </html>

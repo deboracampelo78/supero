@@ -9,21 +9,32 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cadastrar Tarefa</title>
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.min.css" />
     </head>
-    <body>
-        <form action="inserir_tarefa.jsp" method="post">
-            <!--<label>Código: </label><br>
-            <input type="text" name="id"/><br>-->
-            
-            <label>Descrição: </label><br>
-            <input type="text" name="descricao"/><br>
-            
-            <label>Status: </label><br>
-            <input type="text" name="status"/><br>
-            
-            <button type="submit">ENVIAR</button>
-                  
-        </form>
+    <body background="./img/8727.jpg">
+        <div class='col-md-6'> 
+            <br><img src="./img/logo.PNG"><br><br>
+            <h2>Task List Supero</h2><br>
+        </div> 
+        <form action="index.jsp" method="post">
+            <div class='col-md-6'>
+                <div class='alert alert-info'>
+                    <center>
+                        <form action="inserir_tarefa.jsp" method="post">
+                            <label><b>Cadastrar Tarefa</b> </label><br>
+                            <label>Título: </label><br>
+                            <input type="text" name="descricao"/><br>
+                            <label>Status: </label><br>
+                            <input type="text" name="status"/><br><br>
+                            <button type="submit" type="submit" class="btn btn-primary">ENVIAR</button>
+                            <a href="index.jsp"><button type="submit" class="btn btn-primary"> VOLTAR</button></a>
+                        </form>
+                    </center>
+                </div>
+            </div>
+
     </body>
 </html>
